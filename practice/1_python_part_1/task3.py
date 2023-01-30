@@ -16,4 +16,20 @@ from typing import Iterable
 
 
 def build_from_unique_words(*lines: Iterable[str], word_number: int) -> str:
-    ...
+    mylist ={}
+    resList = []
+    i=0
+    for line in lines:
+        tempList=line.split()
+        mylist[i]=[]
+        for k in tempList:
+            if k not in mylist[i]:
+                mylist[i].append(k)
+        i=i+1
+    for j in range(len(mylist)):
+        if word_number<len(mylist[j]):
+            resList.append(mylist[j][word_number])
+    res = " ".join(resList)
+    return res
+
+
